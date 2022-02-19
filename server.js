@@ -13,7 +13,7 @@ const db = knex({
   client: 'pg',
   connection: {
     connectionString : process.env.DATABASE_URL,
-    ssl:true,
+    ssl: true,
   }
 });
 
@@ -22,7 +22,7 @@ const app = express();
 app.use(cors())
 app.use(express.json()); 
 
-app.get('/', (req, res)=> { res.send('it is working') })
+//app.get('/', (req, res)=> { res.send('it is working') })
 app.post('/signin', signin.handleSignin(db, bcrypt))
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
